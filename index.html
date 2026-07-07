@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Proxy Policy Steering — Announcement Thread</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=STIX+Two+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --font: 'Inter','Helvetica Neue',Arial,sans-serif;
+    --math: 'STIX Two Text','Cambria Math',Georgia,'Times New Roman',serif;
+    --bg:#fdfaf4; --panel:#fffdf8; --ink:#1b1b1b; --sub:#6b6453;
+    --line:#e4dcc8; --soft:#efece4; --green:#3f8f5a; --accent:#009900;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{background:var(--bg); color:var(--ink); font-family:var(--font);
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; line-height:1.5;}
+  a{color:var(--green);}
+  .m{font-family:var(--math);} .m i{font-style:italic; font-weight:700;} .m sub{font-style:normal; font-weight:400; font-size:.78em;}
+
+  .wrap{max-width:660px; margin:0 auto; padding:48px 20px 80px;}
+
+  header{text-align:center; margin-bottom:40px;}
+  header h1{font-size:40px; font-weight:800; letter-spacing:-1.2px; margin:0 0 10px;}
+  header .sub{font-size:17px; color:var(--sub); margin:0 0 14px;}
+  header .home{display:inline-block; font-size:15px; font-weight:600; text-decoration:none; color:var(--ink);
+    background:var(--soft); border:1px solid var(--line); border-radius:999px; padding:8px 18px;}
+  header .home:hover{background:var(--ink); color:#fff; border-color:var(--ink);}
+
+  /* Thread: numbered rail + connector + cards */
+  .thread{position:relative;}
+  .tweet{position:relative; padding-left:60px; margin-bottom:22px;}
+  .tweet .num{position:absolute; left:0; top:2px; width:40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; z-index:2;
+    background:var(--accent); color:#fff; font-weight:700; font-size:16px;
+    box-shadow:0 1px 3px rgba(40,32,16,.18);}
+  .tweet::before{content:''; position:absolute; left:19px; top:44px; bottom:-22px; width:2px; background:var(--line); z-index:1;}
+  .tweet:last-child::before{display:none;}
+
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:16px;
+    box-shadow:0 1px 2px rgba(40,32,16,.05); padding:20px 22px 16px;}
+  .card .body{font-size:17px;}
+  .card .body p{margin:0 0 12px;}
+  .card .body p:last-child{margin-bottom:0;}
+  .lead{font-weight:600;}
+
+  /* proxy list (tweet 3) */
+  .proxies{list-style:none; margin:6px 0 0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .proxies li{background:var(--soft); border:1px solid var(--line); border-radius:12px; padding:11px 14px; font-size:16px;}
+  .proxies b{font-weight:700;}
+
+  /* equation (tweet 4) */
+  .eq{margin:12px 0; padding:14px 16px; background:var(--soft); border:1px solid var(--line);
+    border-radius:12px; text-align:center; font-size:20px; letter-spacing:.2px;}
+
+  /* media */
+  .media{margin-top:14px;}
+  .media video{width:100%; aspect-ratio:16/9; display:block; border-radius:12px; border:1px solid var(--line); background:#000;}
+
+  /* card footer: position + copy */
+  .foot{display:flex; align-items:center; justify-content:space-between; margin-top:12px;
+    padding-top:10px; border-top:1px solid var(--soft);}
+  .pos{font-size:13px; color:var(--sub); font-variant-numeric:tabular-nums;}
+  .copy{font:600 13px/1 var(--font); color:var(--sub); background:transparent; border:1px solid var(--line);
+    border-radius:8px; padding:6px 12px; cursor:pointer; transition:all .12s ease;}
+  .copy:hover{color:var(--ink); border-color:var(--sub);}
+  .copy.done{color:#fff; background:var(--green); border-color:var(--green);}
+
+  /* closing block */
+  .tweet.closing .num{background:var(--green);}
+  .closing .card{background:#fbfaf3;}
+  .links{list-style:none; margin:6px 0 0; padding:0; display:flex; flex-direction:column; gap:8px; font-size:17px;}
+  .links a{font-weight:600; text-decoration:none; border-bottom:1.5px solid #bfe0c8;}
+  .links a:hover{border-bottom-color:var(--green);}
+  .thanks{margin-top:12px; font-size:16px; color:var(--sub);}
+
+  footer{text-align:center; margin-top:36px; font-size:13px; color:var(--sub);}
+
+  @media (max-width:520px){
+    header h1{font-size:32px;}
+    .tweet{padding-left:52px;}
+    .tweet .num{width:36px; height:36px; font-size:15px;}
+    .tweet::before{left:17px;}
+    .card{padding:16px 16px 12px;}
+    .card .body{font-size:16px;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Proxy Policy Steering</h1>
+      <p class="sub">Announcement thread</p>
+      <a class="home" href="https://ppsteering.github.io/" target="_blank" rel="noopener">🌐 Project page</a>
+    </header>
+
+    <main class="thread">
+
+      <!-- 1 -->
+      <article class="tweet">
+        <div class="num">1</div>
+        <div class="card">
+          <div class="body">
+            <p class="lead">How to adapt robotic foundation models to novel tasks that they can never perform without modifying the model weights?</p>
+            <p>We introduce <b>Proxy Policy Steering</b>, training stand-alone proxy policies that steer the base model&rsquo;s flow-matching process during inference, achieving task-specific guidance while preserving base priors.</p>
+          </div>
+          <div class="media">
+            <video src="tweet_1.mp4" autoplay muted loop playsinline controls></video>
+          </div>
+          <div class="foot"><span class="pos">1/8</span><button class="copy" type="button">Copy</button></div>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="tweet">
+        <div class="num">2</div>
+        <div class="card">
+          <div class="body">
+            <p>Traditional adaptation methods finetune a foundation model&rsquo;s weights, reshaping the base distribution.</p>
+            <p>While this effectively adapts the policy behavior, it can overfit to the limited demonstrations and lose the general priors.</p>
+          </div>
+          <div class="foot"><span class="pos">2/8</span><button class="copy" type="button">Copy</button></div>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="tweet">
+        <div class="num">3</div>
+        <div class="card">
+          <div class="body">
+            <p>We propose <b>Proxy Policy Steering (PPS)</b>, which estimates how task supervision would shift the base&rsquo;s distribution by training two proxies:</p>
+            <ul class="proxies">
+              <li><b>Reference proxy <span class="m"><i>&pi;</i><sub>ref</sub></span>:</b> distilled from <span class="m"><i>&pi;</i><sub>base</sub></span> on the observations from the task data.</li>
+              <li><b>Task proxy <span class="m"><i>&pi;</i><sub>task</sub></span>:</b> initialized from <span class="m"><i>&pi;</i><sub>ref</sub></span> and fine-tuned on the task data.</li>
+            </ul>
+          </div>
+          <div class="foot"><span class="pos">3/8</span><button class="copy" type="button">Copy</button></div>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="tweet">
+        <div class="num">4</div>
+        <div class="card">
+          <div class="body">
+            <p>The residual between <span class="m"><i>&pi;</i><sub>task</sub></span> and <span class="m"><i>&pi;</i><sub>ref</sub></span> captures the task-induced shift. During inference, we steer <span class="m"><i>&pi;</i><sub>base</sub></span> by integrating the residual in velocity space:</p>
+            <div class="eq"><span class="m"><i>v</i><sub>PPS</sub></span> = <span class="m"><i>v</i><sub>base</sub></span> + <span class="m"><i>&gamma;</i></span> &middot; (<span class="m"><i>v</i><sub>task</sub></span> &minus; <span class="m"><i>v</i><sub>ref</sub></span>)</div>
+            <p>injecting task-specific guidance while eliciting the suitable base prior.</p>
+          </div>
+          <div class="foot"><span class="pos">4/8</span><button class="copy" type="button">Copy</button></div>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="tweet">
+        <div class="num">5</div>
+        <div class="card">
+          <div class="body">
+            <p>On 12 diverse tasks, PPS significantly improves the base policy, with <b>0-to-1 gains</b> on tasks the base never solves on its own.</p>
+            <p>PPS also outperforms fine-tuned models, from-scratch specialists, and prior steering baselines.</p>
+          </div>
+          <div class="foot"><span class="pos">5/8</span><button class="copy" type="button">Copy</button></div>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="tweet">
+        <div class="num">6</div>
+        <div class="card">
+          <div class="body">
+            <p>PPS shows robust manipulation by inheriting the broad priors of the untouched base model &mdash; it can recover from failures it never saw in the demonstrations.</p>
+            <p>LoRA fine-tuning, by contrast, overfits to the handful of demonstrations and loses these priors.</p>
+          </div>
+          <div class="foot"><span class="pos">6/8</span><button class="copy" type="button">Copy</button></div>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="tweet">
+        <div class="num">7</div>
+        <div class="card">
+          <div class="body">
+            <p>PPS also enables injecting new modalities into the base model, since the proxies are separate networks. PPS can route extra modalities such as point cloud or audio into the frozen base, enabling new capabilities.</p>
+          </div>
+          <div class="foot"><span class="pos">7/8</span><button class="copy" type="button">Copy</button></div>
+        </div>
+      </article>
+
+      <!-- closing -->
+      <article class="tweet closing">
+        <div class="num">8</div>
+        <div class="card">
+          <div class="body">
+            <p>Please check out our paper and project page for more details!</p>
+            <ul class="links">
+              <li>🌐 Website: <a href="https://ppsteering.github.io/" target="_blank" rel="noopener">ppsteering.github.io</a></li>
+              <li>📝 Paper: <span style="color:var(--sub)">(coming soon)</span></li>
+            </ul>
+            <p class="thanks">Thanks to my collaborator Tianrui Wang, and supervisors Wei-Chiu Ma and Kuan Fang!</p>
+          </div>
+          <div class="foot"><span class="pos">8/8</span><button class="copy" type="button">Copy</button></div>
+        </div>
+      </article>
+
+    </main>
+
+    <footer>Draft thread visualization &middot; each block = one post in the thread</footer>
+  </div>
+
+  <script>
+    // Copy each block's text (plain) to the clipboard for pasting into X/Twitter.
+    document.querySelectorAll('.tweet').forEach(function (t) {
+      var btn = t.querySelector('.copy'); if (!btn) return;
+      btn.addEventListener('click', function () {
+        var text = t.querySelector('.body').innerText.replace(/\n{2,}/g, '\n\n').trim();
+        var done = function () { btn.textContent = 'Copied!'; btn.classList.add('done'); setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1400); };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, function () {});
+        } else {
+          var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); done(); } catch (e) {} document.body.removeChild(ta);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
