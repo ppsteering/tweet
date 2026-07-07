@@ -60,6 +60,13 @@
   .media{margin-top:14px;}
   .media video{width:100%; aspect-ratio:16/9; display:block; border-radius:12px; border:1px solid var(--line); background:#000;}
 
+  /* cross-modality grid (block 7): 2 columns, no controls, no mute button */
+  .crossmod-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px 12px; margin:14px 0 0; align-items:start;}
+  .crossmod-col-header{font:700 15px/1.2 var(--font); text-align:center; letter-spacing:-0.3px; margin-bottom:2px; color:var(--ink);}
+  .crossmod-video{width:100%; display:block; background:#fff; border-radius:10px;}
+  .crossmod-cell{position:relative; width:100%; display:block; border-radius:10px; overflow:hidden; line-height:0; border:1px solid var(--line);}
+  .crossmod-tag{position:absolute; top:10px; left:10px; font:700 13px/1 var(--font); color:#fff; background:rgba(27,27,27,.7); padding:5px 10px; border-radius:7px; z-index:4; pointer-events:none;}
+
   /* card footer: position + copy */
   .foot{display:flex; align-items:center; justify-content:space-between; margin-top:12px;
     padding-top:10px; border-top:1px solid var(--soft);}
@@ -122,6 +129,7 @@
             <p>Traditional adaptation methods finetune a foundation model&rsquo;s weights, reshaping the base distribution.</p>
             <p>While this effectively adapts the policy behavior, it can overfit to the limited demonstrations and lose the general priors.</p>
           </div>
+          <div class="media"><video src="tweet_2.mp4" autoplay muted loop playsinline controls></video></div>
           <div class="foot"><span class="pos">2/8</span><button class="copy" type="button">Copy</button></div>
         </div>
       </article>
@@ -137,6 +145,7 @@
               <li><b>Task proxy <span class="m"><i>&pi;</i><sub>task</sub></span>:</b> initialized from <span class="m"><i>&pi;</i><sub>ref</sub></span> and fine-tuned on the task data.</li>
             </ul>
           </div>
+          <div class="media"><video src="tweet_3.mp4" autoplay muted loop playsinline controls></video></div>
           <div class="foot"><span class="pos">3/8</span><button class="copy" type="button">Copy</button></div>
         </div>
       </article>
@@ -150,6 +159,7 @@
             <div class="eq"><span class="m"><i>v</i><sub>PPS</sub></span> = <span class="m"><i>v</i><sub>base</sub></span> + <span class="m"><i>&gamma;</i></span> &middot; (<span class="m"><i>v</i><sub>task</sub></span> &minus; <span class="m"><i>v</i><sub>ref</sub></span>)</div>
             <p>injecting task-specific guidance while eliciting the suitable base prior.</p>
           </div>
+          <div class="media"><video src="tweet_4.mp4" autoplay muted loop playsinline controls></video></div>
           <div class="foot"><span class="pos">4/8</span><button class="copy" type="button">Copy</button></div>
         </div>
       </article>
@@ -162,6 +172,7 @@
             <p>On 12 diverse tasks, PPS significantly improves the base policy, with <b>0-to-1 gains</b> on tasks the base never solves on its own.</p>
             <p>PPS also outperforms fine-tuned models, from-scratch specialists, and prior steering baselines.</p>
           </div>
+          <div class="media"><video src="tweet_5.mp4" autoplay muted loop playsinline controls></video></div>
           <div class="foot"><span class="pos">5/8</span><button class="copy" type="button">Copy</button></div>
         </div>
       </article>
@@ -174,6 +185,7 @@
             <p>PPS shows robust manipulation by inheriting the broad priors of the untouched base model &mdash; it can recover from failures it never saw in the demonstrations.</p>
             <p>LoRA fine-tuning, by contrast, overfits to the handful of demonstrations and loses these priors.</p>
           </div>
+          <div class="media"><video src="tweet_6.mp4" autoplay muted loop playsinline controls></video></div>
           <div class="foot"><span class="pos">6/8</span><button class="copy" type="button">Copy</button></div>
         </div>
       </article>
@@ -184,6 +196,26 @@
         <div class="card">
           <div class="body">
             <p>PPS also enables injecting new modalities into the base model, since the proxies are separate networks. PPS can route extra modalities such as point cloud or audio into the frozen base, enabling new capabilities.</p>
+          </div>
+          <div class="media">
+            <div class="crossmod-grid">
+              <div class="crossmod-col-header">Additional Modality</div>
+              <div class="crossmod-col-header">Steered Policy Rollout</div>
+              <div class="crossmod-cell">
+                <video class="crossmod-video" src="pointcloud_mod.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                <span class="crossmod-tag">point cloud</span>
+              </div>
+              <div class="crossmod-cell">
+                <video class="crossmod-video" src="pointcloud_base.mp4" autoplay muted loop playsinline preload="metadata"></video>
+              </div>
+              <div class="crossmod-cell">
+                <video class="crossmod-video" src="audio_mod.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                <span class="crossmod-tag">audio</span>
+              </div>
+              <div class="crossmod-cell">
+                <video class="crossmod-video" src="audio_base.mp4" autoplay muted loop playsinline preload="metadata"></video>
+              </div>
+            </div>
           </div>
           <div class="foot"><span class="pos">7/8</span><button class="copy" type="button">Copy</button></div>
         </div>
