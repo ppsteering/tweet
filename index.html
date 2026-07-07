@@ -48,8 +48,8 @@
   .lead{font-weight:600;}
 
   /* proxy list (tweet 3) */
-  .proxies{list-style:none; margin:6px 0 0; padding:0; display:flex; flex-direction:column; gap:10px;}
-  .proxies li{background:var(--soft); border-radius:12px; padding:11px 14px; font-size:16px;}
+  .proxies{list-style:none; margin:8px 0 0; padding:0; display:flex; flex-direction:column; gap:6px;}
+  .proxies li{font-size:17px;}
   .proxies b{font-weight:700;}
 
   /* equation (tweet 4) */
@@ -149,9 +149,9 @@
         <div class="num">4</div>
         <div class="card">
           <div class="body">
-            <p>The residual between <span class="m"><i>&pi;</i><sub>task</sub></span> and <span class="m"><i>&pi;</i><sub>ref</sub></span> captures the task-induced shift. During inference, we steer <span class="m"><i>&pi;</i><sub>base</sub></span> by integrating the residual in velocity space:</p>
+            <p>The residual between <span class="m"><i>&pi;</i><sub>task</sub></span> and <span class="m"><i>&pi;</i><sub>ref</sub></span> captures the task-induced shift. During inference, we steer <span class="m"><i>&pi;</i><sub>base</sub></span> by adding this residual in velocity space:</p>
             <div class="eq"><span class="m"><i>v</i><sub>PPS</sub></span> = <span class="m"><i>v</i><sub>base</sub></span> + <span class="m"><i>&gamma;</i></span> &middot; (<span class="m"><i>v</i><sub>task</sub></span> &minus; <span class="m"><i>v</i><sub>ref</sub></span>)</div>
-            <p>injecting task-specific guidance while eliciting the suitable base prior.</p>
+            <p>injecting task-specific guidance while keeping the base&rsquo;s broad priors.</p>
           </div>
           <div class="media"><video src="tweet_4.mp4" autoplay muted loop playsinline controls></video></div>
           <div class="foot"><span class="pos">4/8</span><button class="copy" type="button">Copy</button></div>
