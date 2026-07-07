@@ -60,12 +60,6 @@
   .media{margin-top:14px;}
   .media video{width:100%; display:block; border-radius:12px; border:1px solid var(--line); background:var(--panel);}
 
-  /* cross-modality grid (block 7): 2 columns, no controls, no mute button */
-  .crossmod-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px 12px; margin:14px 0 0; align-items:start;}
-  .crossmod-col-header{font:700 15px/1.2 var(--font); text-align:center; letter-spacing:-0.3px; margin-bottom:2px; color:var(--ink);}
-  .crossmod-video{width:100%; display:block; background:#fff; border-radius:10px;}
-  .crossmod-cell{position:relative; width:100%; display:block; border-radius:10px; overflow:hidden; line-height:0; border:1px solid var(--line);}
-  .crossmod-tag{position:absolute; top:10px; left:10px; font:700 13px/1 var(--font); color:#fff; background:rgba(27,27,27,.7); padding:5px 10px; border-radius:7px; z-index:4; pointer-events:none;}
 
   /* card footer: position + copy */
   .foot{display:flex; align-items:center; justify-content:space-between; margin-top:12px;
@@ -197,26 +191,7 @@
           <div class="body">
             <p>PPS also enables injecting new modalities into the base model, since the proxies are separate networks. PPS can route extra modalities such as point cloud or audio into the frozen base, enabling new capabilities.</p>
           </div>
-          <div class="media">
-            <div class="crossmod-grid">
-              <div class="crossmod-col-header">Additional Modality</div>
-              <div class="crossmod-col-header">Steered Policy Rollout</div>
-              <div class="crossmod-cell">
-                <video class="crossmod-video" src="pointcloud_mod.mp4" autoplay muted loop playsinline preload="metadata"></video>
-                <span class="crossmod-tag">point cloud</span>
-              </div>
-              <div class="crossmod-cell">
-                <video class="crossmod-video" src="pointcloud_base.mp4" autoplay muted loop playsinline preload="metadata"></video>
-              </div>
-              <div class="crossmod-cell">
-                <video class="crossmod-video" src="audio_mod.mp4" autoplay muted loop playsinline preload="metadata"></video>
-                <span class="crossmod-tag">audio</span>
-              </div>
-              <div class="crossmod-cell">
-                <video class="crossmod-video" src="audio_base.mp4" autoplay muted loop playsinline preload="metadata"></video>
-              </div>
-            </div>
-          </div>
+          <div class="media"><video src="tweet_7.mp4" autoplay muted loop playsinline controls></video></div>
           <div class="foot"><span class="pos">7/8</span><button class="copy" type="button">Copy</button></div>
         </div>
       </article>
