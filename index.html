@@ -104,12 +104,12 @@
         <div class="card">
           <div class="body">
             <p class="lead">Can a frozen robot foundation model learn tasks it could never do on its own &mdash; without fine-tuning a single weight?</p>
-            <p>We introduce <b>Proxy Policy Steering (PPS)</b>: small proxy policies that steer the frozen base at inference, adding task-specific behavior while keeping its broad priors.</p>
+            <p>We introduce <b>Proxy Policy Steering (PPS)</b>: using proxy policies to steer the frozen base at inference, adding task-specific behavior while keeping base model&rsquo;s broad priors.</p>
           </div>
           <div class="media">
             <video src="tweet_1.mp4" autoplay muted loop playsinline controls></video>
           </div>
-          <div class="foot"><span class="pos">1/8</span><button class="copy" type="button">Copy</button></div>
+          <div class="foot"><span class="pos">1/7</span><button class="copy" type="button">Copy</button></div>
         </div>
       </article>
 
@@ -118,11 +118,11 @@
         <div class="num">2</div>
         <div class="card">
           <div class="body">
-            <p>Traditional adaptation method fine-tunes the foundation model&rsquo;s weights, reshaping its action distribution.</p>
-            <p>This adapts the behavior, but it can overfit to the limited demonstrations and lose the model&rsquo;s broad priors.</p>
+            <p>Fine-tuning methods change the foundation model&rsquo;s weights, reshaping its action distribution.</p>
+            <p>This adapts the base model behavior, but it can overfit to the limited demonstrations and lose the broad priors.</p>
           </div>
           <div class="media"><video src="tweet_2.mp4" autoplay muted loop playsinline controls></video></div>
-          <div class="foot"><span class="pos">2/8</span><button class="copy" type="button">Copy</button></div>
+          <div class="foot"><span class="pos">2/7</span><button class="copy" type="button">Copy</button></div>
         </div>
       </article>
 
@@ -131,14 +131,15 @@
         <div class="num">3</div>
         <div class="card">
           <div class="body">
-            <p>PPS estimates how task supervision would shift the base&rsquo;s distribution by training two proxies:</p>
+            <p>Instead of shifting the base&rsquo;s distribution by fine-tuning, PPS estimates this shift by training two proxies:</p>
             <ul class="proxies">
               <li><b>Reference proxy:</b> distilled from the <b>base policy</b> on the task observations.</li>
               <li><b>Task proxy:</b> initialized from the <b>reference proxy</b> and fine-tuned on the task data.</li>
             </ul>
+            <p>The residual between the <b>task proxy</b> and <b>reference proxy</b> captures the task-induced shift. During inference, we steer the <b>base policy</b> by adding this residual in velocity space, injecting task-specific guidance while keeping the base&rsquo;s broad priors.</p>
           </div>
           <div class="media"><video src="tweet_3.mp4" autoplay muted loop playsinline controls></video></div>
-          <div class="foot"><span class="pos">3/8</span><button class="copy" type="button">Copy</button></div>
+          <div class="foot"><span class="pos">3/7</span><button class="copy" type="button">Copy</button></div>
         </div>
       </article>
 
@@ -147,12 +148,11 @@
         <div class="num">4</div>
         <div class="card">
           <div class="body">
-            <p>The residual between the <b>task proxy</b> and <b>reference proxy</b> captures the task-induced shift. During inference, we steer the <b>base policy</b> by adding this residual in velocity space:</p>
-            <div class="eq">steered velocity = base velocity + &gamma; &middot; (task velocity &minus; reference velocity)</div>
-            <p>injecting task-specific guidance while keeping the base&rsquo;s broad priors.</p>
+            <p>Across 12 diverse tasks, PPS delivers large gains over the base policy, including <b>zero-to-one</b> improvements on tasks it never solves on its own.</p>
+            <p>It also beats fine-tuned models, from-scratch specialists, and prior steering baselines.</p>
           </div>
           <div class="media"><video src="tweet_4.mp4" autoplay muted loop playsinline controls></video></div>
-          <div class="foot"><span class="pos">4/8</span><button class="copy" type="button">Copy</button></div>
+          <div class="foot"><span class="pos">4/7</span><button class="copy" type="button">Copy</button></div>
         </div>
       </article>
 
@@ -161,11 +161,11 @@
         <div class="num">5</div>
         <div class="card">
           <div class="body">
-            <p>Across 12 diverse tasks, PPS delivers large gains over the base &mdash; including <b>0-to-1</b> jumps on tasks it never solves on its own.</p>
-            <p>It also beats fine-tuned models, from-scratch specialists, and prior steering baselines.</p>
+            <p>By keeping the base model untouched, PPS inherits its broad priors and stays robust &mdash; it can recover from failures it never saw in the demonstrations.</p>
+            <p>LoRA fine-tuning, by contrast, overfits to the handful of demos and loses these priors.</p>
           </div>
           <div class="media"><video src="tweet_5.mp4" autoplay muted loop playsinline controls></video></div>
-          <div class="foot"><span class="pos">5/8</span><button class="copy" type="button">Copy</button></div>
+          <div class="foot"><span class="pos">5/7</span><button class="copy" type="button">Copy</button></div>
         </div>
       </article>
 
@@ -174,29 +174,16 @@
         <div class="num">6</div>
         <div class="card">
           <div class="body">
-            <p>By keeping the base model untouched, PPS inherits its broad priors and stays robust &mdash; it can recover from failures it never saw in the demonstrations.</p>
-            <p>LoRA fine-tuning, by contrast, overfits to the handful of demos and loses these priors.</p>
-          </div>
-          <div class="media"><video src="tweet_6.mp4" autoplay muted loop playsinline controls></video></div>
-          <div class="foot"><span class="pos">6/8</span><button class="copy" type="button">Copy</button></div>
-        </div>
-      </article>
-
-      <!-- 7 -->
-      <article class="tweet">
-        <div class="num">7</div>
-        <div class="card">
-          <div class="body">
             <p>Since the proxies are separate networks, PPS can route new modalities like point cloud or audio into the frozen base, enabling new capabilities that are only possible with new sensors.</p>
           </div>
-          <div class="media"><video src="tweet_7.mp4" autoplay muted loop playsinline controls></video></div>
-          <div class="foot"><span class="pos">7/8</span><button class="copy" type="button">Copy</button></div>
+          <div class="media"><video src="tweet_6.mp4" autoplay muted loop playsinline controls></video></div>
+          <div class="foot"><span class="pos">6/7</span><button class="copy" type="button">Copy</button></div>
         </div>
       </article>
 
       <!-- closing -->
       <article class="tweet closing">
-        <div class="num">8</div>
+        <div class="num">7</div>
         <div class="card">
           <div class="body">
             <p>Please check out our paper and project page for more details!</p>
@@ -206,7 +193,7 @@
             </ul>
             <p>Thanks to my collaborator Tianrui Wang, and supervisors Wei-Chiu Ma and Kuan Fang!</p>
           </div>
-          <div class="foot"><span class="pos">8/8</span><button class="copy" type="button">Copy</button></div>
+          <div class="foot"><span class="pos">7/7</span><button class="copy" type="button">Copy</button></div>
         </div>
       </article>
 
