@@ -104,7 +104,7 @@
         <div class="card">
           <div class="body">
             <p>How could generalist policies learn new skills without losing the pre-trained prior?</p>
-            <p>We introduce <b>Proxy Policy Steering (PPS)</b>: using proxy policies to steer the frozen base model at inference, adding task-specific behavior while keeping base model untouched.</p>
+            <p>We introduce <b>Proxy Policy Steering (PPS)</b>: using proxy policies to steer the frozen base model at inference, adding task-specific behavior while keeping the base model untouched.</p>
           </div>
           <div class="media">
             <video src="tweet_1.mp4" autoplay muted loop playsinline controls></video>
@@ -118,8 +118,8 @@
         <div class="num">2</div>
         <div class="card">
           <div class="body">
-            <p>Adapting foundation models to novel tasks ususally requires fine-tuning the base model&rsquo;s weights, which effetively changes its action distribution but could lead to catastrophic forgetting.</p>
-            <p>Recent steering approaches tries to optimize the initial noise or flow-matching process to aviod modifying the weights, yet the sampled actions stay within the base distribution and fail to deliver novel skills.</p>
+            <p>Adapting a foundation model usually requires fine-tuning its weights, which effectively changes its action distribution but risks catastrophic forgetting.</p>
+            <p>Recent steering approaches keep the base model frozen, yet the actions stay within the base distribution and fail to deliver genuinely novel skills.</p>
           </div>
           <div class="media"><video src="tweet_2.mp4" autoplay muted loop playsinline controls></video></div>
           <div class="foot"><span class="pos">2/7</span><button class="copy" type="button">Copy</button></div>
@@ -131,12 +131,13 @@
         <div class="num">3</div>
         <div class="card">
           <div class="body">
-            <p>Instead of fitting the base&rsquo;s distribution to a narrow task dataset or steering only within the base distribution, PPS estimates how the task supervision would shift the base distribution by constructing two proxies:</p>
+            <!-- <p>Instead of fitting the base&rsquo;s distribution to a narrow task dataset or steering only within the base distribution, PPS estimates how the task supervision would shift the base distribution by constructing two proxies:</p> -->
+            <p>PPS instead constructs two proxies to estimate how the task supervision would shift the base distribution:</p>
             <ul class="proxies">
               <li><b>Reference proxy:</b> distilled from the <b>base policy</b> on the task observations.</li>
               <li><b>Task proxy:</b> initialized from the <b>reference proxy</b> and fine-tuned on the task data.</li>
             </ul>
-            <p>The residual between the <b>task proxy</b> and <b>reference proxy</b> captures the task-induced shift. During inference, we steer the <b>base policy</b> by adding this residual in velocity space, injecting task-specific guidance while keeping the base&rsquo;s broad priors.</p>
+            <p>Their residual captures the task-induced shift. We add it in velocity space to steer the base policy, injecting task guidance while keeping its broad priors.</p>
           </div>
           <div class="media"><video src="tweet_3.mp4" autoplay muted loop playsinline controls></video></div>
           <div class="foot"><span class="pos">3/7</span><button class="copy" type="button">Copy</button></div>
@@ -148,7 +149,7 @@
         <div class="num">4</div>
         <div class="card">
           <div class="body">
-            <p>Across 12 diverse tasks, PPS delivers large gains over the base policy, including <b>zero-to-one</b> improvements on tasks it never solves on its own.</p>
+            <p>Across 12 diverse tasks, PPS delivers large gains over the base policy, including <b>zero-to-one</b> improvements on tasks the base policy never solves on its own.</p>
             <p>It also beats fine-tuned models, from-scratch specialists, and prior steering baselines.</p>
           </div>
           <div class="media"><video src="tweet_4.mp4" autoplay muted loop playsinline controls></video></div>
@@ -174,7 +175,7 @@
         <div class="num">6</div>
         <div class="card">
           <div class="body">
-            <p>Since the proxies are separate networks, PPS can route new modalities like point cloud or audio into the frozen base, enabling new capabilities that are only possible with new sensors.</p>
+            <p>Since the proxies are separate networks, PPS can route new modalities like point clouds or audio into the frozen base, enabling new capabilities that are only possible with new sensors.</p>
           </div>
           <div class="media"><video src="tweet_6.mp4" autoplay muted loop playsinline controls></video></div>
           <div class="foot"><span class="pos">6/7</span><button class="copy" type="button">Copy</button></div>
@@ -191,7 +192,7 @@
               <li>🌐 Website: <a href="https://ppsteering.github.io/" target="_blank" rel="noopener">ppsteering.github.io</a></li>
               <li>📝 Paper: <a href="https://arxiv.org/abs/&lt;&gt;" target="_blank" rel="noopener">arxiv.org/abs/&lt;&gt;</a></li>
             </ul>
-            <p>Thanks to my collaborator Tianrui Wang, and supervisors Wei-Chiu Ma and Kuan Fang!</p>
+            <p>Thanks to my collaborator Tianrui Wang, and to my supervisors Wei-Chiu Ma and Kuan Fang!</p>
           </div>
           <div class="foot"><span class="pos">7/7</span><button class="copy" type="button">Copy</button></div>
         </div>
