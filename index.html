@@ -103,8 +103,8 @@
         <div class="num">1</div>
         <div class="card">
           <div class="body">
-            <p class="lead">Can a frozen robot foundation model learn tasks it could never do on its own without fine-tuning a single weight?</p>
-            <p>We introduce <b>Proxy Policy Steering (PPS)</b>: using proxy policies to steer the frozen base at inference, adding task-specific behavior while keeping base model&rsquo;s broad priors.</p>
+            <p>How could generalist policies learn new skills without losing the pre-trained prior?</p>
+            <p>We introduce <b>Proxy Policy Steering (PPS)</b>: using proxy policies to steer the frozen base model at inference, adding task-specific behavior while keeping base model untouched.</p>
           </div>
           <div class="media">
             <video src="tweet_1.mp4" autoplay muted loop playsinline controls></video>
@@ -118,8 +118,8 @@
         <div class="num">2</div>
         <div class="card">
           <div class="body">
-            <p>Fine-tuning methods change the foundation model&rsquo;s weights, reshaping its action distribution.</p>
-            <p>This adapts the base model behavior, but it can overfit to the limited demonstrations and lose the broad priors.</p>
+            <p>Adapting foundation models to novel tasks ususally requires fine-tuning the base model&rsquo;s weights, which effetively changes its action distribution but could lead to catastrophic forgetting.</p>
+            <p>Recent steering approaches tries to optimize the initial noise or flow-matching process to aviod modifying the weights, yet the sampled actions stay within the base distribution and fail to deliver novel skills.</p>
           </div>
           <div class="media"><video src="tweet_2.mp4" autoplay muted loop playsinline controls></video></div>
           <div class="foot"><span class="pos">2/7</span><button class="copy" type="button">Copy</button></div>
@@ -131,7 +131,7 @@
         <div class="num">3</div>
         <div class="card">
           <div class="body">
-            <p>Instead of shifting the base&rsquo;s distribution by fine-tuning, PPS estimates this shift by training two proxies:</p>
+            <p>Instead of fitting the base&rsquo;s distribution to a narrow task dataset or steering only within the base distribution, PPS estimates how the task supervision would shift the base distribution by constructing two proxies:</p>
             <ul class="proxies">
               <li><b>Reference proxy:</b> distilled from the <b>base policy</b> on the task observations.</li>
               <li><b>Task proxy:</b> initialized from the <b>reference proxy</b> and fine-tuned on the task data.</li>
