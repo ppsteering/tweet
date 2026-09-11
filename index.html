@@ -103,8 +103,8 @@
         <div class="num">1</div>
         <div class="card">
           <div class="body">
-            <p>How could generalist policies learn new skills without losing the pre-trained prior?</p>
-            <p>We introduce <b>Proxy Policy Steering (PPS)</b>: using proxy policies to steer the frozen base model at inference, adding task-specific behavior while keeping the base model untouched.</p>
+            <p>How can generalist policies learn new skills without losing their pretrained prior?</p>
+            <p>We introduce <b>Proxy Policy Steering (PPS)</b>, which uses proxy policies to steer the frozen base policy at inference, adding task-specific behavior without touching its weights.</p>
           </div>
           <div class="media">
             <video src="tweet_1.mp4" autoplay muted loop playsinline controls></video>
@@ -119,7 +119,7 @@
         <div class="card">
           <div class="body">
             <p>Adapting a foundation model usually requires fine-tuning its weights, which effectively changes its action distribution but risks catastrophic forgetting.</p>
-            <p>Recent steering approaches keep the base model frozen, yet the actions stay within the base distribution and fail to deliver genuinely novel skills.</p>
+            <p>Recent steering approaches keep the base policy frozen, yet the sampled actions stay within the base distribution and fail to deliver genuinely novel skills.</p>
           </div>
           <div class="media"><video src="tweet_2.mp4" autoplay muted loop playsinline controls></video></div>
           <div class="foot"><span class="pos">2/7</span><button class="copy" type="button">Copy</button></div>
@@ -132,7 +132,7 @@
         <div class="card">
           <div class="body">
             <!-- <p>Instead of fitting the base&rsquo;s distribution to a narrow task dataset or steering only within the base distribution, PPS estimates how the task supervision would shift the base distribution by constructing two proxies:</p> -->
-            <p>PPS instead constructs two proxies to estimate how the task supervision would shift the base distribution:</p>
+            <p>PPS instead constructs two proxies to estimate how task supervision would shift the base distribution:</p>
             <ul class="proxies">
               <li><b>Reference proxy:</b> distilled from the <b>base policy</b> on the task observations.</li>
               <li><b>Task proxy:</b> initialized from the <b>reference proxy</b> and fine-tuned on the task data.</li>
@@ -149,7 +149,7 @@
         <div class="num">4</div>
         <div class="card">
           <div class="body">
-            <p>Across 12 diverse tasks, PPS delivers large gains over the base policy, including <b>zero-to-one</b> improvements on tasks the base policy never solves on its own.</p>
+            <p>Across 12 diverse tasks, PPS delivers large gains over the base policy, including <b>zero-to-one</b> improvements on tasks the base never solves on its own.</p>
             <p>It also beats fine-tuned models, from-scratch specialists, and prior steering baselines.</p>
           </div>
           <div class="media"><video src="tweet_4.mp4" autoplay muted loop playsinline controls></video></div>
@@ -162,8 +162,8 @@
         <div class="num">5</div>
         <div class="card">
           <div class="body">
-            <p>By keeping the base model untouched, PPS inherits its broad priors and stays robust. It can recover from failures it never saw in the demonstrations.</p>
-            <p>LoRA fine-tuning, by contrast, overfits to the handful of demos and loses these priors.</p>
+            <p>By keeping the base policy untouched, PPS inherits its broad priors and stays robust. It can recover from failures it never saw in the demonstrations.</p>
+            <p>LoRA fine-tuning, by contrast, overfits to the handful of demos and loses those priors.</p>
           </div>
           <div class="media"><video src="tweet_5.mp4" autoplay muted loop playsinline controls></video></div>
           <div class="foot"><span class="pos">5/7</span><button class="copy" type="button">Copy</button></div>
@@ -175,7 +175,7 @@
         <div class="num">6</div>
         <div class="card">
           <div class="body">
-            <p>Since the proxies are separate networks, PPS can route new modalities like point clouds or audio into the frozen base, enabling new capabilities that are only possible with new sensors.</p>
+            <p>Since the proxies are separate networks, PPS can route new modalities such as point clouds or audio into the frozen base, enabling capabilities that are only possible with new sensors.</p>
           </div>
           <div class="media"><video src="tweet_6.mp4" autoplay muted loop playsinline controls></video></div>
           <div class="foot"><span class="pos">6/7</span><button class="copy" type="button">Copy</button></div>
@@ -187,13 +187,13 @@
         <div class="num">7</div>
         <div class="card">
           <div class="body">
-            <p>Please check out our paper and project page for more details!</p>
+            <p>Please check out our website for more details!</p>
             <ul class="links">
               <li>🌐 Website: <a href="https://ppsteering.github.io/" target="_blank" rel="noopener">ppsteering.github.io</a></li>
-              <li>📝 Paper: <a href="https://arxiv.org/abs/&lt;&gt;" target="_blank" rel="noopener">arxiv.org/abs/&lt;&gt;</a></li>
+              <li>📝 Paper: <a href="https://arxiv.org/abs/2609.09148" target="_blank" rel="noopener">arxiv.org/abs/2609.09148</a></li>
               <li>💻 Code: <a href="https://github.com/TritiumR/pps" target="_blank" rel="noopener">github.com/TritiumR/pps</a></li>
             </ul>
-            <p>Thanks to my collaborator @TODO-tianrui, and to my supervisors @TODO-weichiu and @TODO-kuanfang!</p>
+            <p>Thanks to my collaborator @TODO-tianrui, and to my supervisors @weichiuma and @kuanfang!</p>
             <p>See you in Austin #CoRL</p>
           </div>
           <div class="foot"><span class="pos">7/7</span><button class="copy" type="button">Copy</button></div>
